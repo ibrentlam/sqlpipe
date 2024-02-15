@@ -532,7 +532,7 @@ func (system Mssql) convertPipeFilesOverride(
 
 			fileNum, err := getFileNum(pipeFileInfo.FilePath)
 			if err != nil {
-				transfer.Error = fmt.Sprintf("error getting file num :: %v", err)
+				transfer.Error = fmt.Sprintf("error1 getting file num :: %v", err)
 				transferMap.CancelAndSetStatus(transfer.Id, transfer, StatusError)
 				errorLog.Println(transfer.Error)
 				return
@@ -755,7 +755,7 @@ func (system Mssql) runInsertCmd(
 
 	fileNum, err := getFileNum(finalCsvInfo.FilePath)
 	if err != nil {
-		return fmt.Errorf("error getting file num :: %v", err)
+		return fmt.Errorf("error2 getting file num :: %v", err)
 	}
 
 	escapedSchemaPeriodtable := getSchemaPeriodTable(schema, table, system, true)

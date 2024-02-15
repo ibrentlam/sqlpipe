@@ -101,7 +101,7 @@ func openConnectionPool(name, connectionString, driverName string) (connectionPo
 
 	err = connectionPool.PingContext(ctx)
 	if err != nil {
-		return nil, fmt.Errorf("error pinging %v :: %v", name, err)
+		return nil, fmt.Errorf("error pinging %v :: %v", connectionString, err)
 	}
 
 	return connectionPool, nil
@@ -560,7 +560,7 @@ func createPipeFiles(
 
 				eg.Go(func() error {
 					pipeFileName := filepath.Join(
-						transfer.PipeFileDir, fmt.Sprintf("%032b.pipe", pipeFileNum))
+						transfer.PipeFileDir, fmt.Sprintf("%d.pipe", pipeFileNum))
 
 					pipeFile, err = os.Create(pipeFileName)
 					if err != nil {

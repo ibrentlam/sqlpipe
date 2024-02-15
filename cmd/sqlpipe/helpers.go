@@ -50,8 +50,9 @@ func getFileNum(fileName string) (fileNum int, err error) {
 	fileNameClean := filepath.Base(fileName)
 	fileNumString := strings.Split(fileNameClean, ".")[0]
 	fileNum, err = strconv.Atoi(fileNumString)
+
 	if err != nil {
-		return 0, fmt.Errorf("error converting file number to int :: %v", err)
+		return 0, fmt.Errorf("error converting file %v to int :: %v", fileName, err)
 	}
 
 	return fileNum, nil
